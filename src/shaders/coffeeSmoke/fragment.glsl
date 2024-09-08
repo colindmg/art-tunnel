@@ -7,8 +7,8 @@ void main()
 {
   // Scale and animate
   vec2 smokeUv = vUv;
-  // smokeUv.x *= 0.5;
-  smokeUv.y *= 0.9;
+  smokeUv.x *= 5.0;
+  smokeUv.y *= 2.0;
   smokeUv.y -= uTime * 0.05;
 
   // Smoke

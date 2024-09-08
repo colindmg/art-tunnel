@@ -28,6 +28,7 @@ const gltfLoader = new GLTFLoader();
 
 const texture = textureLoader.load("/textures/rokleam.webp");
 texture.wrapT = THREE.RepeatWrapping;
+texture.wrapS = THREE.RepeatWrapping;
 
 /**
  * Sizes
@@ -112,8 +113,21 @@ onOffButton.addEventListener("click", () => {
 const spiralGeometry = new THREE.PlaneGeometry(1, 1, 16, 64);
 spiralGeometry.scale(1.5, 6, 1.5);
 
+const tunnelGeometry = new THREE.CylinderGeometry(
+  5,
+  2.5,
+  50,
+  40,
+  64,
+  true,
+  0,
+  Math.PI * 2
+);
+tunnelGeometry.scale(0.4, 0.4, 0.4);
+tunnelGeometry.rotateX(Math.PI / 2);
+
 // Material
-const spiralMaterial = new THREE.ShaderMaterial({
+const tunnelMaterial = new THREE.ShaderMaterial({
   // wireframe: true,
   depthWrite: false,
   side: THREE.DoubleSide,
@@ -127,8 +141,8 @@ const spiralMaterial = new THREE.ShaderMaterial({
 });
 
 // Mesh
-const spiral = new THREE.Mesh(spiralGeometry, spiralMaterial);
-scene.add(spiral);
+const tunnel = new THREE.Mesh(tunnelGeometry, tunnelMaterial);
+scene.add(tunnel);
 
 /**
  * Animate
@@ -138,8 +152,8 @@ const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
 
-  // Update spiral
-  spiral.material.uniforms.uTime.value = elapsedTime;
+  // Update tunnel
+  tunnel.material.uniforms.uTime.value = elapsedTime;
 
   // Render
   renderer.render(scene, camera);
