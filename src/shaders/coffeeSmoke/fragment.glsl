@@ -7,9 +7,10 @@ void main()
 {
   // Scale and animate
   vec2 smokeUv = vUv;
-  smokeUv.x *= 5.0;
-  smokeUv.y *= 2.0;
-  smokeUv.y -= uTime * 0.05;
+  smokeUv.x *= 1.0;
+  smokeUv.y *= 0.75;
+  smokeUv.y -= uTime * 0.1;
+  smokeUv.x += uTime * 0.01;
 
   // Smoke
   vec4 smoke = texture2D(uPerlinTexture, smokeUv);

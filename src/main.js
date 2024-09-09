@@ -26,7 +26,7 @@ scene.background = new THREE.Color(0xf6faf9);
 const textureLoader = new THREE.TextureLoader();
 const gltfLoader = new GLTFLoader();
 
-const texture = textureLoader.load("/textures/rokleam.webp");
+const texture = textureLoader.load("/textures/texture.png");
 texture.wrapT = THREE.RepeatWrapping;
 texture.wrapS = THREE.RepeatWrapping;
 
@@ -60,7 +60,7 @@ const camera = new THREE.PerspectiveCamera(
   25,
   sizes.width / sizes.height,
   0.1,
-  100
+  20
 );
 camera.position.x = 0;
 camera.position.y = 0;
