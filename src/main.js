@@ -26,112 +26,153 @@ scene.background = new THREE.Color(0xf6faf9);
 const textureLoader = new THREE.TextureLoader();
 const gltfLoader = new GLTFLoader();
 
-const texture1 = textureLoader.load("/textures/test1.png");
-const texture2 = textureLoader.load("/textures/test2.png");
-
 // Chargement des textures
 const images = [
   {
-    texture: textureLoader.load("/textures/test1.png"),
+    texture: textureLoader.load("/textures/test1.webp"),
     position: { x: 0, y: 0 },
   },
   {
-    texture: textureLoader.load("/textures/test2.png"),
+    texture: textureLoader.load("/textures/test2.webp"),
     position: { x: 1, y: 0 },
   },
   {
-    texture: textureLoader.load("/textures/test3.png"),
+    texture: textureLoader.load("/textures/test3.webp"),
     position: { x: -1, y: 0 },
   },
   {
-    texture: textureLoader.load("/textures/test4.png"),
+    texture: textureLoader.load("/textures/test4.webp"),
     position: { x: 0, y: 1 },
   },
   {
-    texture: textureLoader.load("/textures/test5.png"),
+    texture: textureLoader.load("/textures/test5.webp"),
     position: { x: 0, y: -1 },
   },
   {
-    texture: textureLoader.load("/textures/test6.png"),
+    texture: textureLoader.load("/textures/test6.webp"),
     position: { x: 1, y: 1 },
   },
   {
-    texture: textureLoader.load("/textures/test7.png"),
+    texture: textureLoader.load("/textures/test7.webp"),
     position: { x: 1, y: -1 },
   },
   {
-    texture: textureLoader.load("/textures/test8.png"),
+    texture: textureLoader.load("/textures/test8.webp"),
     position: { x: -1, y: 1 },
   },
   {
-    texture: textureLoader.load("/textures/test9.png"),
+    texture: textureLoader.load("/textures/test9.webp"),
     position: { x: -1, y: -1 },
   },
   {
-    texture: textureLoader.load("/textures/test10.png"),
+    texture: textureLoader.load("/textures/test10.webp"),
     position: { x: 2, y: 0 },
   },
   {
-    texture: textureLoader.load("/textures/test11.png"),
+    texture: textureLoader.load("/textures/test11.webp"),
     position: { x: -2, y: 0 },
   },
   {
-    texture: textureLoader.load("/textures/test12.png"),
+    texture: textureLoader.load("/textures/test12.webp"),
     position: { x: 0, y: 2 },
   },
   {
-    texture: textureLoader.load("/textures/test13.png"),
+    texture: textureLoader.load("/textures/test13.webp"),
     position: { x: 0, y: -2 },
   },
   {
-    texture: textureLoader.load("/textures/test14.png"),
+    texture: textureLoader.load("/textures/test14.webp"),
     position: { x: 2, y: 2 },
   },
   {
-    texture: textureLoader.load("/textures/test15.png"),
+    texture: textureLoader.load("/textures/test15.webp"),
     position: { x: 2, y: -2 },
   },
   {
-    texture: textureLoader.load("/textures/test16.png"),
+    texture: textureLoader.load("/textures/test16.webp"),
     position: { x: -2, y: 2 },
   },
   {
-    texture: textureLoader.load("/textures/test17.png"),
+    texture: textureLoader.load("/textures/test17.webp"),
     position: { x: -2, y: -2 },
   },
   {
-    texture: textureLoader.load("/textures/test18.png"),
+    texture: textureLoader.load("/textures/test18.webp"),
     position: { x: 1, y: 2 },
   },
   {
-    texture: textureLoader.load("/textures/test19.png"),
+    texture: textureLoader.load("/textures/test19.webp"),
     position: { x: 1, y: -2 },
   },
   {
-    texture: textureLoader.load("/textures/test20.png"),
+    texture: textureLoader.load("/textures/test20.webp"),
     position: { x: -1, y: 2 },
   },
   {
-    texture: textureLoader.load("/textures/test21.png"),
+    texture: textureLoader.load("/textures/test21.webp"),
     position: { x: -1, y: -2 },
   },
   {
-    texture: textureLoader.load("/textures/test22.png"),
+    texture: textureLoader.load("/textures/test22.webp"),
     position: { x: -2, y: 1 },
   },
   {
-    texture: textureLoader.load("/textures/test23.png"),
+    texture: textureLoader.load("/textures/test23.webp"),
     position: { x: 2, y: 1 },
   },
   {
-    texture: textureLoader.load("/textures/test24.png"),
+    texture: textureLoader.load("/textures/test24.webp"),
     position: { x: -2, y: -1 },
   },
   {
-    texture: textureLoader.load("/textures/test25.png"),
+    texture: textureLoader.load("/textures/test25.webp"),
     position: { x: 2, y: -1 },
   },
+  {
+    texture: textureLoader.load("/textures/test26.webp"),
+    position: { x: 3, y: 0 },
+  },
+  {
+    texture: textureLoader.load("/textures/test27.webp"),
+    position: { x: -3, y: 0 },
+  },
+  {
+    texture: textureLoader.load("/textures/test28.webp"),
+    position: { x: 3, y: 2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test29.webp"),
+    position: { x: 3, y: -2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test30.webp"),
+    position: { x: -3, y: 2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test31.webp"),
+    position: { x: -3, y: -2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test32.webp"),
+    position: { x: 3, y: -1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test33.webp"),
+    position: { x: -3, y: -1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test34.webp"),
+    position: { x: 3, y: 1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test35.webp"),
+    position: { x: -3, y: 1 },
+  },
 ];
+
+images.forEach((image) => {
+  image.texture.encoding = THREE.SRGBColorSpace;
+});
 
 /**
  * Sizes
@@ -167,7 +208,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.x = 0;
 camera.position.y = 0;
-camera.position.z = 10;
+camera.position.z = 9;
 scene.add(camera);
 
 /**
@@ -243,8 +284,8 @@ for (let i = 0; i < images.length; i++) {
   const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
   // Positionne les planes en ligne (ou en grille, selon tes préférences)
-  plane.position.x = images[i].position.x * 1.05;
-  plane.position.y = images[i].position.y * 1.05;
+  plane.position.x = images[i].position.x * 1.1;
+  plane.position.y = images[i].position.y * 1.1;
 
   // Ajoute le plane à la scène et au tableau
   scene.add(plane);
