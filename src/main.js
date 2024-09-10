@@ -111,6 +111,26 @@ const images = [
     texture: textureLoader.load("/textures/test20.png"),
     position: { x: -1, y: 2 },
   },
+  {
+    texture: textureLoader.load("/textures/test21.png"),
+    position: { x: -1, y: -2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test22.png"),
+    position: { x: -2, y: 1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test23.png"),
+    position: { x: 2, y: 1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test24.png"),
+    position: { x: -2, y: -1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test25.png"),
+    position: { x: 2, y: -1 },
+  },
 ];
 
 /**
@@ -159,6 +179,7 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+ReadableStreamDefaultController.antialias = true;
 
 /**
  * Post-processing
