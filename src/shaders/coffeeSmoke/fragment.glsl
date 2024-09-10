@@ -1,4 +1,4 @@
-uniform sampler2D uPerlinTexture;
+uniform sampler2D uTexture;
 uniform float uTime;
 
 varying vec2 vUv;
@@ -7,13 +7,13 @@ void main()
 {
   // Scale and animate
   vec2 smokeUv = vUv;
-  smokeUv.x *= 1.0;
-  smokeUv.y *= 0.75;
-  smokeUv.y -= uTime * 0.1;
-  smokeUv.x += uTime * 0.01;
+  // smokeUv.x *= 1.0;
+  // smokeUv.y *= 0.75;
+  // smokeUv.y -= uTime * 0.1;
+  // smokeUv.x += uTime * 0.01;
 
   // Smoke
-  vec4 smoke = texture2D(uPerlinTexture, smokeUv);
+  vec4 smoke = texture2D(uTexture, smokeUv);
 
   // Remap
   // smoke = smoothstep(0.4, 1.0, smoke);
@@ -22,7 +22,7 @@ void main()
   // smoke = 1.0;
   // smoke *= smoothstep(0.0, 0.1, vUv.x);
   // smoke *= smoothstep(1.0, 0.9, vUv.x);
-  smoke *= smoothstep(0.0, 0.15, vUv.y);
+  // smoke *= smoothstep(0.0, 0.15, vUv.y);
   // smoke *= smoothstep(1.0, 0.4, vUv.y);
 
 

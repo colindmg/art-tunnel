@@ -1,5 +1,5 @@
 uniform float uTime;
-uniform sampler2D uPerlinTexture;
+uniform sampler2D uTexture;
 
 varying vec2 vUv;
 
@@ -7,19 +7,17 @@ varying vec2 vUv;
 
 void main() 
 {
+  vec3 worldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
+
+  // Utilise worldPosition au lieu de position locale pour les vagues
   vec3 newPosition = position;
 
-  // Twist
-  // float twistPerlin = texture(
-  //   uPerlinTexture, 
-  //   vec2(0.5, uv.y * 0.2 - uTime)
-  // ).r;
-  // float angle = newPosition.y + uTime * 0.6;
-  // newPosition.xz = rotate2D(newPosition.xz, angle);
+  // Exemple d'onde simple utilisant les coordonnées mondiales
+  newPosition.z += sin(worldPosition.x * 10.0 + uTime * 2.0) * 0.5;
 
-  // Final position
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
+  // Calcul final de la position
+  gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(newPosition, 1.0);
 
-  // Pass UV to fragment shader
+  // Passe les UV au fragment shader
   vUv = uv;
 }

@@ -26,9 +26,52 @@ scene.background = new THREE.Color(0xf6faf9);
 const textureLoader = new THREE.TextureLoader();
 const gltfLoader = new GLTFLoader();
 
-const texture = textureLoader.load("/textures/texture.png");
-texture.wrapT = THREE.RepeatWrapping;
-texture.wrapS = THREE.RepeatWrapping;
+const texture1 = textureLoader.load("/textures/test1.png");
+const texture2 = textureLoader.load("/textures/test2.png");
+
+// Chargement des textures
+const images = [
+  {
+    texture: textureLoader.load("/textures/test1.png"),
+    position: { x: 0, y: 0 },
+  },
+  {
+    texture: textureLoader.load("/textures/test2.png"),
+    position: { x: 1, y: 0 },
+  },
+  {
+    texture: textureLoader.load("/textures/test3.png"),
+    position: { x: -1, y: 0 },
+  },
+  {
+    texture: textureLoader.load("/textures/test4.png"),
+    position: { x: 0, y: 1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test5.png"),
+    position: { x: 0, y: -1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test6.png"),
+    position: { x: 1, y: 1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test7.png"),
+    position: { x: 1, y: -1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test8.png"),
+    position: { x: -1, y: 1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test9.png"),
+    position: { x: -1, y: -1 },
+  },
+  {
+    texture: textureLoader.load("/textures/test10.png"),
+    position: { x: 2, y: 0 },
+  },
+];
 
 /**
  * Sizes
@@ -106,43 +149,45 @@ onOffButton.addEventListener("click", () => {
 });
 
 /**
- * Image spiral
+ * Geometry et Material
  */
+// Geometry (utilisé par tous les planes)
+const planeGeometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 
-// Geometry
-const spiralGeometry = new THREE.PlaneGeometry(1, 1, 16, 64);
-spiralGeometry.scale(1.5, 6, 1.5);
-
-const tunnelGeometry = new THREE.CylinderGeometry(
-  5,
-  2.5,
-  50,
-  40,
-  64,
-  true,
-  0,
-  Math.PI * 2
-);
-tunnelGeometry.scale(0.4, 0.4, 0.4);
-tunnelGeometry.rotateX(Math.PI / 2);
-
-// Material
-const tunnelMaterial = new THREE.ShaderMaterial({
-  // wireframe: true,
-  depthWrite: false,
+// Material de base
+const baseMaterial = new THREE.ShaderMaterial({
+  // depthWrite: false,
   side: THREE.DoubleSide,
   transparent: true,
   vertexShader: spiralVertexShader,
   fragmentShader: spiralFragmentShader,
   uniforms: {
-    uTime: new THREE.Uniform(0),
-    uPerlinTexture: new THREE.Uniform(texture),
+    uTime: { value: 0 },
+    uTexture: { value: null }, // on changera ça pour chaque plane
   },
 });
 
-// Mesh
-const tunnel = new THREE.Mesh(tunnelGeometry, tunnelMaterial);
-scene.add(tunnel);
+/**
+ * Création des planes
+ */
+const planes = [];
+
+for (let i = 0; i < 10; i++) {
+  // Clone le material de base pour chaque plane
+  const planeMaterial = baseMaterial.clone();
+  planeMaterial.uniforms.uTexture.value = images[i].texture; // Associe la texture
+
+  // Crée le mesh pour chaque plane
+  const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+
+  // Positionne les planes en ligne (ou en grille, selon tes préférences)
+  plane.position.x = images[i].position.x * 1.05;
+  plane.position.y = images[i].position.y * 1.05;
+
+  // Ajoute le plane à la scène et au tableau
+  scene.add(plane);
+  planes.push(plane);
+}
 
 /**
  * Animate
@@ -152,8 +197,10 @@ const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
 
-  // Update tunnel
-  tunnel.material.uniforms.uTime.value = elapsedTime;
+  // Met à jour l'uniforme du temps pour chaque plane
+  planes.forEach((plane) => {
+    plane.material.uniforms.uTime.value = elapsedTime;
+  });
 
   // Render
   renderer.render(scene, camera);
