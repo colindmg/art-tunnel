@@ -12,9 +12,10 @@ void main()
   // Utilise worldPosition au lieu de position locale pour les vagues
   vec3 newPosition = position;
 
-  // Exemple d'onde simple utilisant les coordonnées mondiales
+  // Vague
   float wave = worldPosition.x + worldPosition.y;
   newPosition.z += sin(wave * 2.5 + uTime * 1.5) * 0.5;
+
 
   // Calcul final de la position
   gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(newPosition, 1.0);

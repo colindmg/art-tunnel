@@ -306,11 +306,13 @@ const tick = () => {
   });
 
   // Render
-  renderer.render(scene, camera);
+  // renderer.render(scene, camera);
 
   // Post-processing
   if (postProcessingActive) {
     composer.render();
+  } else {
+    renderer.render(scene, camera);
   }
 
   // Call tick again on the next frame
