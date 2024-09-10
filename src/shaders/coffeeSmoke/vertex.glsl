@@ -13,7 +13,8 @@ void main()
   vec3 newPosition = position;
 
   // Exemple d'onde simple utilisant les coordonnées mondiales
-  newPosition.z += sin(worldPosition.x * 10.0 + uTime * 2.0) * 0.5;
+  float wave = worldPosition.x + worldPosition.y;
+  newPosition.z += sin(wave * 2.5 + uTime * 1.5) * 0.5;
 
   // Calcul final de la position
   gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(newPosition, 1.0);

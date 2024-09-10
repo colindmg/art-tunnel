@@ -71,6 +71,46 @@ const images = [
     texture: textureLoader.load("/textures/test10.png"),
     position: { x: 2, y: 0 },
   },
+  {
+    texture: textureLoader.load("/textures/test11.png"),
+    position: { x: -2, y: 0 },
+  },
+  {
+    texture: textureLoader.load("/textures/test12.png"),
+    position: { x: 0, y: 2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test13.png"),
+    position: { x: 0, y: -2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test14.png"),
+    position: { x: 2, y: 2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test15.png"),
+    position: { x: 2, y: -2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test16.png"),
+    position: { x: -2, y: 2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test17.png"),
+    position: { x: -2, y: -2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test18.png"),
+    position: { x: 1, y: 2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test19.png"),
+    position: { x: 1, y: -2 },
+  },
+  {
+    texture: textureLoader.load("/textures/test20.png"),
+    position: { x: -1, y: 2 },
+  },
 ];
 
 /**
@@ -107,7 +147,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.x = 0;
 camera.position.y = 0;
-camera.position.z = 8;
+camera.position.z = 10;
 scene.add(camera);
 
 /**
@@ -157,6 +197,7 @@ const planeGeometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 // Material de base
 const baseMaterial = new THREE.ShaderMaterial({
   // depthWrite: false,
+  // wireframe: true,
   side: THREE.DoubleSide,
   transparent: true,
   vertexShader: spiralVertexShader,
