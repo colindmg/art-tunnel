@@ -213,7 +213,7 @@ const baseMaterial = new THREE.ShaderMaterial({
  */
 const planes = [];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < images.length; i++) {
   // Clone le material de base pour chaque plane
   const planeMaterial = baseMaterial.clone();
   planeMaterial.uniforms.uTexture.value = images[i].texture; // Associe la texture
